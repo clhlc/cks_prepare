@@ -1,0 +1,6 @@
+imagePolicy:
+  kubeConfigFile: /path/to/kubeconfig
+  allowTTL: 50
+  denyTTL: 50
+  retryBackoff: 500
+  defaultAllow: false # 默认的true修改为false

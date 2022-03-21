@@ -1,0 +1,23 @@
+apiVersion: audit.k8s.io/v1 # This is required.
+kind: Policy
+omitStages:
+  - "RequestReceived"
+rules:
+  # 保留指定不记录到日志中的内容（原配置文件内容）
+  - level: RequestResponse
+    resources:
+    - group: ""
+      resources: ["namespaces"]
+  - level: Request
+    resources:
+    - group: "" 
+      resources: ["persistentvolumes"]
+    namespaces: ["front-apps"]
+
+  - level: Metadata
+    resources:
+    - group: "" # core API group
+      resources: ["secrets", "configmaps"]
+  - level: Metadata
+    omitStages:
+      - "RequestReceived"
