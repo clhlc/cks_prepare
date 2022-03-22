@@ -7,14 +7,20 @@ Q:
 
 A:
 1. 
+```shell
 USER=$(kubectl get secrets secret1 -ojsonpath='{.data.user}'|base64 -d)
 kubectl get secrets secret1 -ojsonpath='{.data.user}'|base64 -d > /etc/secret/user
+```
 
+```
 PASS=$(kubectl get secrets secret1 -ojsonpath='{.data.pass}'|base64 -d)
 kubectl get secrets secret1 -ojsonpath='{.data.pass}'|base64 -d > /etc/secret/pass
+```
 
 2. 
+```
 kubectl create secret generic secret2 --from-literal=user=$USER --from-literal=pass=$PASS
+```
 
 3. 创建pod挂载secret02
 ```yaml
@@ -35,3 +41,4 @@ spec:
     secret:
       secretName: secret2
       optional: false # default setting; "mysecret" must exist
+```
