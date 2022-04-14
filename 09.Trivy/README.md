@@ -1,16 +1,23 @@
 # Trivy
 
+![9](../images/9.png)
 
-## 找出镜像中critical和high的镜像，并且删除对应的pod
+## 找出某个namespace下所有pod使用的image，并检测镜像
+## Trivy在master节点，需要ssh到具体的master节点才行
 
-```shel
-kubectl get po -o yaml|grep 'image: '
+
+
+```shell
+# master节点执行
+kubectl -n kamino get po -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.containers[*].image}{"\n"}{end}'
 ```
 
 ```shell
+# master节点执行
 trivy image -s CRITICAL,HIGH nginx:latest
 ```
 
 ```shell
+#控制台执行
 kubectl delete po xxx
 ```

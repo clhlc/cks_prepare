@@ -1,4 +1,5 @@
 # Service account
+![6](../images/6.png)
 
 官方文档: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 
@@ -10,7 +11,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: frontend-sa
+  name: backend-sa
   namespace： qa
 automountServiceAccountToken: false # *
 ```
@@ -23,7 +24,7 @@ metadata:
   name: my-pod
   namespace: qa 
 spec:
-  serviceAccountName: frontend-sa
+  serviceAccountName: backend-sa
   automountServiceAccountToken: false # *
 ```
 
