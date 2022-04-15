@@ -1,12 +1,13 @@
 # Audit
 
-官方文档：https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
+![](../images/13.png)
+## 官方文档：https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
 
-## 启用审计
+## 启用审计(master节点)
 
 ```yaml
 - --audit-policy-file=/etc/kubernetes/audit-policy.yaml
-- --audit-log-path=/var/log/kubernetes/audit/audit.log
+- --audit-log-path=/var/log/kubernetes/audit-logs.log
 - --audit-log-maxage=5
 - --audit-log-maxbackup=10
 ```
