@@ -1,6 +1,8 @@
 # ImagePolicyWebhook
 
-官方文档：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
+![1](../images/1.png)
+
+## 官方文档：https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook
 
 ## 主要考察点
 
