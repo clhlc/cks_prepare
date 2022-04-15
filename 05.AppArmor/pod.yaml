@@ -3,11 +3,9 @@ kind: Pod
 metadata:
   name: hello-apparmor
   annotations:
-    # Tell Kubernetes to apply the AppArmor profile "k8s-apparmor-example-deny-write".
-    # Note that this is ignored if the Kubernetes node is not running version 1.4 or greater.
-    container.apparmor.security.beta.kubernetes.io/hello: localhost/k8s-apparmor-example-deny-write # *
+    container.apparmor.security.beta.kubernetes.io/hello: localhost/nginx_apparmor # 重点是hello的容器和localhost/nginx_apparmor
 spec:
   containers:
-  - name: hello # *
-    image: busybox
+  - name: hello #和上面的hello对应
+    image: busybox:1.28
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]

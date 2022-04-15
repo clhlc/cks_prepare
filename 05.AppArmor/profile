@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
+profile nginx_apparmor flags=(attach_disconnected) {
   #include <abstractions/base>
 
   file,

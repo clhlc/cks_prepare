@@ -2,11 +2,13 @@
 
 ![10](../images/10.png)
 
-1、在api server的配置文件修改：
+## 1、在api server的配置文件修改：
 
+```yaml
 --authorization-mode=Node,RBAC
+```
 
-2、kubelet
+## 2、kubelet
 ```yaml
 address: 0.0.0.0
 apiVersion: kubelet.config.k8s.io/v1beta1
@@ -26,6 +28,7 @@ authorization:
 ...
 ```
 
-3、etcd.yaml
-
+## 3、etcd.yaml
+```yaml
 --client-cert-auth=true
+```
