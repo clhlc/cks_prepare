@@ -10,4 +10,12 @@ metadata:
 handler: runsc
 ```
 ## 更新Pod中使用新的Runtime Class (handler)
-### 导出yaml，添加runtimeClassName，重新创建
+```shell
+kubectl get all -n server
+```
+
+```yaml
+spec:
+  runtimeClassName: untrusted   
+  containers:
+```

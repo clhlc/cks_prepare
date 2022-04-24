@@ -10,6 +10,9 @@
 ```shell
 # master节点执行
 kubectl -n kamino get po -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.containers[*].image}{"\n"}{end}'
+
+# 或者
+kubectl get pods --namespace kamino --output=custom-columns="NAME:.metadata.name,IMAGE:.spec.containers[*].image"
 ```
 
 ```shell

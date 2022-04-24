@@ -3,6 +3,10 @@
 ![8](../images/8.png)
 ## 官方文档：https://kubernetes.io/docs/concepts/policy/pod-security-policy/
 
+## 确定apiserver 启用psp,到master节点查看
+```yaml
+- --enable-admission-plugins=NodeRestriction,PodSecurityPolicy
+```
 ## 创建新的psp
 
 ```shell

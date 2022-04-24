@@ -45,8 +45,7 @@ spec:
           matchLabels:
             role: test # testing namespace 的label
     - from:
-      - namespaceSelector:
-          matchLabels: # 所有namespace
+      - namespaceSelector: {} # 所有namespace
       - podSelector:
           matchLabels:
             enviroment: staging
