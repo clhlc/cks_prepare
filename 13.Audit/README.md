@@ -3,13 +3,13 @@
 ![](../images/13.png)
 ## 官方文档：https://kubernetes.io/docs/tasks/debug-application-cluster/audit/
 
-## 启用审计(master节点)
+## 1、启用审计(master节点)
 
 ```yaml
 - --audit-policy-file=/etc/kubernetes/audit-policy.yaml
 - --audit-log-path=/var/log/kubernetes/audit-logs.log
-- --audit-log-maxage=5
-- --audit-log-maxbackup=10
+- --audit-log-maxbackup=10 # defines the maximum number of audit log files to retain
+- --audit-log-maxage=2 # defines the maximum size in megabytes of the audit log file before it gets rotate
 ```
 
 挂载文件
@@ -39,8 +39,32 @@ volumes:
     type: DirectoryOrCreate
 ```
 
-## 修改对应的policy 文件
+## 2、修改对应的policy 文件
+```yaml
+apiVersion: audit.k8s.io/v1
+kind: Policy
+omitStages:
+  - "RequestReceived"
+rules:
+  - level: RequestResponse
+    resources:
+    - group: ""
+      resources: ["namespaces"]
+  - level: Request
+    resources:
+    - group: ""
+      resources: ["persistentvolumes"]
+    namespaces: ["front-apps"]
+  - level: Metadata
+    resources:
+    - group: ""
+      resources: ["configmap", "secret"]
+  - level: Metadata
+    omitStages:
+    - "RequestReceived"
+```
 
-## 应用policy
-
-## 重启kubelet
+## 3、重启kubelet
+```shell
+systemctl restart kubelet
+```

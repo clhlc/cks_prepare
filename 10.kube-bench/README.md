@@ -32,3 +32,5 @@ authorization:
 ```yaml
 --client-cert-auth=true
 ```
+
+## 4、重启kubelet
