@@ -8,7 +8,9 @@
 ## 在node节点创建AppArmor使用的profile,并加载profile 文件
 
 ```shell
-apparmor_parser /etc/apparmor.d/nginx_apparmor
+apparmor_parser -q /etc/apparmor.d/nginx_apparmor
+
+apparmor_status | grep nginx
 ```
 
 ## 创建pod

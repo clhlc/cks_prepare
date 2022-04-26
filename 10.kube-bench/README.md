@@ -5,12 +5,13 @@
 ## 1、在api server的配置文件修改：
 
 ```yaml
---authorization-mode=Node,RBAC
+- --authorization-mode=Node,RBAC
+- --insecure-port=0
+#- --insecure-bind-address=0.0.0.0 # 删除
 ```
 
-## 2、kubelet
+## 2、kubelet (/var/lib/kubelet/config.yaml) node节点
 ```yaml
-address: 0.0.0.0
 apiVersion: kubelet.config.k8s.io/v1beta1
 authentication:
   anonymous:
@@ -28,9 +29,14 @@ authorization:
 ...
 ```
 
-## 3、etcd.yaml
+## 3、etcd.yaml (/etc/kubernetes/manifests/etcd.yaml )
 ```yaml
---client-cert-auth=true
+- --client-cert-auth=true
 ```
 
 ## 4、重启kubelet
+
+```shell
+service kubelet restart
+```
+

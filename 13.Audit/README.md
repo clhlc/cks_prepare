@@ -6,10 +6,10 @@
 ## 1、启用审计(master节点)
 
 ```yaml
-- --audit-policy-file=/etc/kubernetes/audit-policy.yaml
-- --audit-log-path=/var/log/kubernetes/audit-logs.log
-- --audit-log-maxbackup=10 # defines the maximum number of audit log files to retain
-- --audit-log-maxage=2 # defines the maximum size in megabytes of the audit log file before it gets rotate
+- --audit-policy-file=/etc/kubernetes/logpolicy/sample-policy.yaml
+- --audit-log-path=/var/log/kubernetes/audit-logs.txt
+- --audit-log-maxbackup=2 # The maximum number of old audit log files to retain. Setting a value of 0 will mean there's no restriction on the number of files.
+- --audit-log-maxage=10 # The maximum number of days to retain old audit log files based on the timestamp encoded in their filename.
 ```
 
 挂载文件
@@ -17,7 +17,7 @@
 ```yaml
 ...
 volumeMounts:
-  - mountPath: /etc/kubernetes/audit-policy.yaml
+  - mountPath: /etc/kubernetes/logpolicy/sample-policy.yaml
     name: audit
     readOnly: true
   - mountPath: /var/log/kubernetes/audit/
@@ -30,12 +30,12 @@ volumeMounts:
 volumes:
 - name: audit
   hostPath:
-    path: /etc/kubernetes/audit-policy.yaml
+    path: /etc/kubernetes/logpolicy/sample-policy.yaml
     type: File
 
 - name: audit-log
   hostPath:
-    path: /var/log/kubernetes/audit/
+    path: /var/log/kubernetes/
     type: DirectoryOrCreate
 ```
 

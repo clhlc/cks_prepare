@@ -9,8 +9,23 @@
 ```
 ## 创建新的psp
 
-```shell
-kubectl apply -f psp.yaml
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: prevent-psp-policy
+spec:
+  privileged: false  #false表示禁止创建privileged的pod
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  volumes:
+  - '*'
 ```
 
 ## 创建clusterrole 使用psp
