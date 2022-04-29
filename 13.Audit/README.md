@@ -35,8 +35,8 @@ volumes:
 
 - name: audit-log
   hostPath:
-    path: /var/log/kubernetes/
-    type: DirectoryOrCreate
+    path: /var/log/kubernetes/audit-logs.txt
+    type: FileOrCreate
 ```
 
 ## 2、修改对应的policy 文件

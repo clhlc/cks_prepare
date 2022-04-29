@@ -25,8 +25,8 @@ admission_config.yaml  apiserver-client-cert.pem  apiserver-client-key.pem  exte
 # 映射 volumes      
   volumes:
     - name: epconfig
-    hostPath:
-      path: /etc/kubernetes/epconfig
+    	hostPath:
+      	path: /etc/kubernetes/epconfig
 ```
 
 ## 3、创建相对应的json或者yaml文件（admission_config.yaml）

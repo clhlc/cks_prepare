@@ -17,7 +17,7 @@ kubectl get pods --namespace kamino --output=custom-columns="NAME:.metadata.name
 
 ```shell
 # master节点执行
-trivy image -s CRITICAL,HIGH nginx:latest
+trivy image -s Critical,High pod-image
 ```
 
 ```shell

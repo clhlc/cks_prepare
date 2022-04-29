@@ -2,6 +2,12 @@
 
 ![10](../images/10.png)
 
+## 0、在master节点执行kube-bench
+
+```shell
+kube-bench run node/master/etcd
+```
+
 ## 1、在api server的配置文件修改：
 
 ```yaml

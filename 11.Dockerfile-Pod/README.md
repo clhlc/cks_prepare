@@ -13,7 +13,7 @@ FROM ubuntu:16.04
 ```
 
 
-## Pod、Deployment
+## Deployment
 ### 1、修改特权
 ```yaml
 privileged: false
